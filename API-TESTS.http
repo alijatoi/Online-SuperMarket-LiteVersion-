@@ -1,0 +1,140 @@
+# Online SuperMarket API - Sample HTTP Requests
+# You can use these requests with VS Code REST Client extension or similar tools
+
+@baseUrl = http://localhost:5000/api
+
+### Get all categories
+GET {{baseUrl}}/categories
+
+### Get a specific category
+GET {{baseUrl}}/categories/1
+
+### Create a new category
+POST {{baseUrl}}/categories
+Content-Type: application/json
+
+{
+  "name": "Frozen Foods",
+  "description": "Frozen meals and ice cream"
+}
+
+### Update a category
+PUT {{baseUrl}}/categories/1
+Content-Type: application/json
+
+{
+  "name": "Fresh Fruits & Vegetables",
+  "description": "Farm fresh produce"
+}
+
+### Delete a category
+DELETE {{baseUrl}}/categories/6
+
+###
+
+### Get all products
+GET {{baseUrl}}/products
+
+### Get products by category
+GET {{baseUrl}}/products?categoryId=1
+
+### Get a specific product
+GET {{baseUrl}}/products/1
+
+### Create a new product
+POST {{baseUrl}}/products
+Content-Type: application/json
+
+{
+  "name": "Orange",
+  "description": "Fresh oranges",
+  "price": 3.99,
+  "stock": 80,
+  "imageUrl": "/images/orange.jpg",
+  "categoryId": 1
+}
+
+### Update a product
+PUT {{baseUrl}}/products/1
+Content-Type: application/json
+
+{
+  "price": 2.49,
+  "stock": 120
+}
+
+### Delete a product
+DELETE {{baseUrl}}/products/9
+
+###
+
+### Get all customers
+GET {{baseUrl}}/customers
+
+### Get a specific customer
+GET {{baseUrl}}/customers/1
+
+### Create a new customer
+POST {{baseUrl}}/customers
+Content-Type: application/json
+
+{
+  "name": "Jane Smith",
+  "email": "jane@example.com",
+  "phone": "555-0123",
+  "address": "456 Oak Avenue"
+}
+
+### Update a customer
+PUT {{baseUrl}}/customers/1
+Content-Type: application/json
+
+{
+  "phone": "555-9999",
+  "address": "789 Pine Street"
+}
+
+### Delete a customer
+DELETE {{baseUrl}}/customers/2
+
+###
+
+### Get all orders
+GET {{baseUrl}}/orders
+
+### Get orders by customer
+GET {{baseUrl}}/orders?customerId=1
+
+### Get a specific order
+GET {{baseUrl}}/orders/1
+
+### Create a new order
+POST {{baseUrl}}/orders
+Content-Type: application/json
+
+{
+  "customerId": 1,
+  "orderItems": [
+    {
+      "productId": 1,
+      "quantity": 5
+    },
+    {
+      "productId": 3,
+      "quantity": 2
+    },
+    {
+      "productId": 7,
+      "quantity": 3
+    }
+  ]
+}
+
+### Update order status
+PUT {{baseUrl}}/orders/1/status
+Content-Type: application/json
+
+"Completed"
+
+### Delete an order
+DELETE {{baseUrl}}/orders/1
