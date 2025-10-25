@@ -19,7 +19,7 @@ namespace OrderService.Api
                 return;
             }
 
-            Console.WriteLine($"✅ Found SQLite DB: {sqlitePath}");
+            Console.WriteLine($" Found SQLite DB: {sqlitePath}");
 
             var sqliteConnString = $"Data Source={sqlitePath};";
             using var sqliteConn = new SqliteConnection(sqliteConnString);
@@ -34,7 +34,7 @@ namespace OrderService.Api
                 ordersTable.Load(reader);
             }
 
-            Console.WriteLine($"📦 Orders rows loaded: {ordersTable.Rows.Count}");
+            Console.WriteLine($" Orders rows loaded: {ordersTable.Rows.Count}");
 
             // 3️⃣ Load OrderItems
             var itemsTable = new DataTable();
@@ -45,11 +45,11 @@ namespace OrderService.Api
                 itemsTable.Load(reader);
             }
 
-            Console.WriteLine($"📦 OrderItem rows loaded: {itemsTable.Rows.Count}");
+            Console.WriteLine($"OrderItem rows loaded: {itemsTable.Rows.Count}");
 
             if (ordersTable.Rows.Count == 0 && itemsTable.Rows.Count == 0)
             {
-                Console.WriteLine("⚠️ No data found in SQLite database.");
+                Console.WriteLine("No data found in SQLite database.");
                 return;
             }
 
@@ -72,7 +72,7 @@ namespace OrderService.Api
                         DestinationTableName = "Orders"
                     };
                     bulkCopy.WriteToServer(ordersTable);
-                    Console.WriteLine("✅ Orders migrated successfully.");
+                    Console.WriteLine("Orders migrated successfully.");
                 }
 
                 if (itemsTable.Rows.Count > 0)
@@ -82,16 +82,16 @@ namespace OrderService.Api
                         DestinationTableName = "OrderItem"
                     };
                     bulkCopy.WriteToServer(itemsTable);
-                    Console.WriteLine("✅ OrderItem migrated successfully.");
+                    Console.WriteLine("OrderItem migrated successfully.");
                 }
 
                 transaction.Commit();
-                Console.WriteLine("🎉 Data migration completed successfully!");
+                Console.WriteLine("Data migration completed successfully!");
             }
             catch (Exception ex)
             {
                 transaction.Rollback();
-                Console.WriteLine($"❌ Migration failed: {ex.Message}");
+                Console.WriteLine($"Migration failed: {ex.Message}");
             }
         }
 

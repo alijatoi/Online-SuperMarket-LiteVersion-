@@ -2,3 +2,5 @@
 .vs/
 bin/
 obj/
+
+OrderService.Api/orders.db
