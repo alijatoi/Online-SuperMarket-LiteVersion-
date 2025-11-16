@@ -59,9 +59,10 @@ Online SuperMarket Lite Version provides basic functionality for users to browse
 ## Technologies Used
 
 - **Language:** C# (100%)
-- **Framework:** .NET (WinForms, ASP.NET, or specify if applicable)
-- **Database:** (Specify if used, e.g., SQL Server, SQLite, or In-Memory)
-- **Others:** (Any other relevant libraries or tools)
+- **Framework:** .NET (ASP.NET)
+- **Database:** (SQL Server)
+- **Database:** (Frontend is still in pending)
+
 
 ## Contributing
 
