@@ -1,4 +1,4 @@
-# Online SuperMarket Lite Version
+# Online SuperMarket Lite Version (Still Not Completed)
 
 Welcome to **Online SuperMarket Lite Version** – a lightweight, C#-powered online supermarket management system. This project is designed as a simplified platform for learning, experimenting, or launching a basic online grocery service.
 
