@@ -10,12 +10,12 @@ namespace OrderService.Api
     {
         public static void Migrate()
         {
-            // 1️⃣ SQLite path
-            var sqlitePath = @"D:\C#\Apps\SupermarketOrderServices\OrderService.Api\orders.db";
+            // SQLite path (For this projekt i have used my local Database) Give database path below
+            var sqlitePath = @"p";
 
             if (!File.Exists(sqlitePath))
             {
-                Console.WriteLine($"❌ SQLite file not found: {sqlitePath}");
+                Console.WriteLine($" SQLite file not found: {sqlitePath}");
                 return;
             }
 
@@ -25,7 +25,7 @@ namespace OrderService.Api
             using var sqliteConn = new SqliteConnection(sqliteConnString);
             sqliteConn.Open();
 
-            // 2️⃣ Load Orders
+            // Load Orders
             var ordersTable = new DataTable();
             using (var cmd = sqliteConn.CreateCommand())
             {
@@ -36,7 +36,7 @@ namespace OrderService.Api
 
             Console.WriteLine($" Orders rows loaded: {ordersTable.Rows.Count}");
 
-            // 3️⃣ Load OrderItems
+            // Load OrderItems
             var itemsTable = new DataTable();
             using (var cmd = sqliteConn.CreateCommand())
             {
@@ -53,11 +53,11 @@ namespace OrderService.Api
                 return;
             }
 
-            // 4️⃣ Convert DataTypes for SQL Server compatibility
+            //  Convert DataTypes for SQL Server compatibility
             ordersTable = ConvertTableForSqlServer(ordersTable);
             itemsTable = ConvertTableForSqlServer(itemsTable);
 
-            // 5️⃣ SQL Server connection
+            // SQL Server connection
             var sqlServerConnString = @"Server=(LocalDB)\MSSQLLocalDB;Database=SupermarketOrders;Trusted_Connection=True;";
             using var sqlConn = new SqlConnection(sqlServerConnString);
             sqlConn.Open();
@@ -95,7 +95,7 @@ namespace OrderService.Api
             }
         }
 
-        // 6️⃣ Helper method: Convert SQLite string columns into proper SQL Server types
+        // Helper method: Convert SQLite string columns into proper SQL Server types
         private static DataTable ConvertTableForSqlServer(DataTable source)
         {
             var dest = new DataTable();
